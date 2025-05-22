@@ -175,7 +175,7 @@ metadata:
     capabilities: Basic Install
     createdAt: "2025-05-13T18:42:01Z"
     categories: Security
-    containerImage: ethanwtm/trend-operator:v0.0.1
+    containerImage: ethanwtm/trend-operator@sha256:6f413c6861f2cf5f0e7731bef60bec16f9f2d6ca5d082fad6b30344dbdcad8ac
     description: Installs TrendMicro VisionOne Container Security.
     features.operators.openshift.io/disconnected: "false"
     features.operators.openshift.io/fips-compliant: "true"
@@ -201,102 +201,102 @@ spec:
       name: trendoperators.container-security.trendmicro.com
       version: v1alpha1
       resources:
-        - kind: Deployment
-          version: v1
-          name: trend-operator-controller-manager
-        - kind: ServiceAccount
-          version: v1
-          name: trend-operator-controller-manager
-        - kind: Service
-          version: v1
-          name: trend-service
-        - kind: Secret
-          version: v1
-          name: trend-secret
-        - kind: ConfigMap
-          version: v1
-          name: trend-config
+      - kind: Deployment
+        version: v1
+        name: trend-operator-controller-manager
+      - kind: ServiceAccount
+        version: v1
+        name: trend-operator-controller-manager
+      - kind: Service
+        version: v1
+        name: trend-service
+      - kind: Secret
+        version: v1
+        name: trend-secret
+      - kind: ConfigMap
+        version: v1
+        name: trend-config
       specDescriptors:
-        - path: cloudOne
-          displayName: Cloud One
-          description: Cloud One service configuration
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:object
-        - path: replicaCount
-          displayName: Replica Count
-          description: Number of operator replicas
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:podCount
-        - path: image
-          displayName: Image Configuration
-          description: Image repository, tag, and pull policy
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:text
-        - path: resources
-          displayName: Resource Requests & Limits
-          description: CPU and memory configurations
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:resourceRequirements
-        - path: affinity
-          displayName: Affinity Rules
-          description: Node/pod affinity settings
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:affinity
-        - path: nodeSelector
-          displayName: Node Selector
-          description: Node labels to target pods to specific nodes
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:nodeSelector
-        - path: podAnnotations
-          displayName: Pod Annotations
-          description: Add custom annotations to pods
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:text
-        - path: podLabels
-          displayName: Pod Labels
-          description: Add custom labels to pods
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:text
-        - path: serviceAccount
-          displayName: Service Account
-          description: Service account settings
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:object
-        - path: securityContext
-          displayName: Security Context
-          description: Container security context
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:podSecurityContext
-        - path: podSecurityContext
-          displayName: Pod Security Context
-          description: Pod-level security context
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:podSecurityContext
-        - path: imagePullSecrets
-          displayName: Image Pull Secrets
-          description: Image pull secrets to use for private registries
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:imagePullSecrets
-        - path: volumes
-          displayName: Volumes
-          description: Pod volumes configuration
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:volumes
-        - path: volumeMounts
-          displayName: Volume Mounts
-          description: Volume mount points
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:volumeMounts
-        - path: fullnameOverride
-          displayName: Fullname Override
-          description: Override full resource names
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:text
-        - path: nameOverride
-          displayName: Name Override
-          description: Override resource names
-          x-descriptors:
-            - urn:alm:descriptor:com.tectonic.ui:text
+      - path: cloudOne
+        displayName: Cloud One
+        description: Cloud One service configuration
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:object
+      - path: replicaCount
+        displayName: Replica Count
+        description: Number of operator replicas
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:podCount
+      - path: image
+        displayName: Image Configuration
+        description: Image repository, tag, and pull policy
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - path: resources
+        displayName: Resource Requests & Limits
+        description: CPU and memory configurations
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:resourceRequirements
+      - path: affinity
+        displayName: Affinity Rules
+        description: Node/pod affinity settings
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:affinity
+      - path: nodeSelector
+        displayName: Node Selector
+        description: Node labels to target pods to specific nodes
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:nodeSelector
+      - path: podAnnotations
+        displayName: Pod Annotations
+        description: Add custom annotations to pods
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - path: podLabels
+        displayName: Pod Labels
+        description: Add custom labels to pods
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - path: serviceAccount
+        displayName: Service Account
+        description: Service account settings
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:object
+      - path: securityContext
+        displayName: Security Context
+        description: Container security context
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:podSecurityContext
+      - path: podSecurityContext
+        displayName: Pod Security Context
+        description: Pod-level security context
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:podSecurityContext
+      - path: imagePullSecrets
+        displayName: Image Pull Secrets
+        description: Image pull secrets to use for private registries
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:imagePullSecrets
+      - path: volumes
+        displayName: Volumes
+        description: Pod volumes configuration
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:volumes
+      - path: volumeMounts
+        displayName: Volume Mounts
+        description: Volume mount points
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:volumeMounts
+      - path: fullnameOverride
+        displayName: Fullname Override
+        description: Override full resource names
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - path: nameOverride
+        displayName: Name Override
+        description: Override resource names
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
 
 
   description: Trend Micro Container Security Operator
@@ -461,7 +461,7 @@ spec:
                 env:
                 - name: LOG_LEVEL
                   value: debug
-                image: ethanwtm/trend-operator:v0.0.1
+                image: ethanwtm/trend-operator@sha256:6f413c6861f2cf5f0e7731bef60bec16f9f2d6ca5d082fad6b30344dbdcad8ac
                 livenessProbe:
                   httpGet:
                     path: /healthz
@@ -550,3 +550,8 @@ spec:
     name: TrendMicro
     url: trendmicro.com
   version: 0.0.1
+  relatedImages:
+  - name: trend-operator-6f413c6861f2cf5f0e7731bef60bec16f9f2d6ca5d082fad6b30344dbdcad8ac-annotation
+    image: ethanwtm/trend-operator@sha256:6f413c6861f2cf5f0e7731bef60bec16f9f2d6ca5d082fad6b30344dbdcad8ac
+  - name: manager
+    image: ethanwtm/trend-operator@sha256:6f413c6861f2cf5f0e7731bef60bec16f9f2d6ca5d082fad6b30344dbdcad8ac
