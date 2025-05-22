@@ -174,7 +174,7 @@ metadata:
       ]
     capabilities: Basic Install
     createdAt: "2025-05-13T18:42:01Z"
-    categories: Container Security
+    categories: Security
     containerImage: ethanwtm/trend-operator:v0.0.1
     description: Installs TrendMicro VisionOne Container Security.
     features.operators.openshift.io/disconnected: "false"
