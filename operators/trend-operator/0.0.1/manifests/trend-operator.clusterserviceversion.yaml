@@ -149,7 +149,7 @@ metadata:
             "image": {
               "pullPolicy": "IfNotPresent",
               "repository": "ethanwtm/trend-operator",
-              "tag": "v0.0.1"
+              "tag": " version:v0.0.1"
             },
             "imagePullSecrets": [],
             "nameOverride": "",
@@ -173,9 +173,24 @@ metadata:
         }
       ]
     capabilities: Basic Install
-    createdAt: "2025-05-22T15:18:59Z"
+    createdAt: "2025-05-13T18:42:01Z"
+    categories: Container Security
+    containerImage: ethanwtm/trend-operator:v0.0.1
+    description: Installs TrendMicro VisionOne Container Security.
+    features.operators.openshift.io/disconnected: "false"
+    features.operators.openshift.io/fips-compliant: "true"
+    features.operators.openshift.io/proxy-aware: "false"
+    features.operators.openshift.io/tls-profiles: "false"
+    features.operators.openshift.io/token-auth-aws: "false"
+    features.operators.openshift.io/token-auth-azure: "false"
+    features.operators.openshift.io/token-auth-gcp: "false"
+    operators.openshift.io/valid-subscription: TrendOperator Subscription
+    features.operators.openshift.io/cnf: "false"
+    features.operators.openshift.io/cni: "false"
+    features.operators.openshift.io/csi: "false"
     operators.operatorframework.io/builder: operator-sdk-v1.39.2
     operators.operatorframework.io/project_layout: helm.sdk.operatorframework.io/v1
+    support: TrendMicro VisionOne
   name: trend-operator.v0.0.1
   namespace: placeholder
 spec:
@@ -185,6 +200,105 @@ spec:
     - kind: TrendOperator
       name: trendoperators.container-security.trendmicro.com
       version: v1alpha1
+      resources:
+        - kind: Deployment
+          version: v1
+          name: trend-operator-controller-manager
+        - kind: ServiceAccount
+          version: v1
+          name: trend-operator-controller-manager
+        - kind: Service
+          version: v1
+          name: trend-service
+        - kind: Secret
+          version: v1
+          name: trend-secret
+        - kind: ConfigMap
+          version: v1
+          name: trend-config
+      specDescriptors:
+        - path: cloudOne
+          displayName: Cloud One
+          description: Cloud One service configuration
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:object
+        - path: replicaCount
+          displayName: Replica Count
+          description: Number of operator replicas
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:podCount
+        - path: image
+          displayName: Image Configuration
+          description: Image repository, tag, and pull policy
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:text
+        - path: resources
+          displayName: Resource Requests & Limits
+          description: CPU and memory configurations
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:resourceRequirements
+        - path: affinity
+          displayName: Affinity Rules
+          description: Node/pod affinity settings
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:affinity
+        - path: nodeSelector
+          displayName: Node Selector
+          description: Node labels to target pods to specific nodes
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:nodeSelector
+        - path: podAnnotations
+          displayName: Pod Annotations
+          description: Add custom annotations to pods
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:text
+        - path: podLabels
+          displayName: Pod Labels
+          description: Add custom labels to pods
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:text
+        - path: serviceAccount
+          displayName: Service Account
+          description: Service account settings
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:object
+        - path: securityContext
+          displayName: Security Context
+          description: Container security context
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:podSecurityContext
+        - path: podSecurityContext
+          displayName: Pod Security Context
+          description: Pod-level security context
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:podSecurityContext
+        - path: imagePullSecrets
+          displayName: Image Pull Secrets
+          description: Image pull secrets to use for private registries
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:imagePullSecrets
+        - path: volumes
+          displayName: Volumes
+          description: Pod volumes configuration
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:volumes
+        - path: volumeMounts
+          displayName: Volume Mounts
+          description: Volume mount points
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:volumeMounts
+        - path: fullnameOverride
+          displayName: Fullname Override
+          description: Override full resource names
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:text
+        - path: nameOverride
+          displayName: Name Override
+          description: Override resource names
+          x-descriptors:
+            - urn:alm:descriptor:com.tectonic.ui:text
+
+
   description: Trend Micro Container Security Operator
   displayName: TrendOperator
   icon:

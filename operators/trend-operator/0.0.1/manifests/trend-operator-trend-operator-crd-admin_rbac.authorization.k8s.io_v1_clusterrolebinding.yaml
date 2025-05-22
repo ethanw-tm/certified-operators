@@ -10,4 +10,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: trend-operator-controller-manager
-  namespace: default
+  namespace: trendmicro-operator
